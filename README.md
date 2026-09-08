@@ -9,7 +9,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | Day | Date | Task | Folder | Status | Key Outcome |
 |:---:|:----:|------|:------:|:------:|-------------|
 | 1 | 08-09-2026 | Data Cleaning & Preprocessing | [📁 day-01](day-1/data-cleaning-preprocessing/README.md) | ✅ Done | Cleaned 9,994-row Superstore file; fixed 7 quality issues, 17 duplicate rows removed (0.17%) |
-| 2 | - | *[tomorrow's task]* | [📁 day-02](day-02-<topic>/) | 🚧 In Progress | — |
+| 2 | - | *[-]* | [📁 day-02](-) | 🚧 Pending... | — |
 | 3 | | | | ⬜ Not Started | — |
 | 4 | | | | ⬜ Not Started | — |
 | 5 | | | | ⬜ Not Started | — |

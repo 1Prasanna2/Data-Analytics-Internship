@@ -1,0 +1,50 @@
+# ---------- Python artifacts ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+*.egg
+
+# ---------- Virtual environments ----------
+venv/
+.venv/
+env/
+ENV/
+
+# ---------- Jupyter ----------
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# ---------- IDE / editor files ----------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ---------- OS junk ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Secrets & local config ----------
+.env
+.env.*
+credentials.json
+*.pem
+
+# ---------- Logs & temp files ----------
+*.log
+*.tmp
+tmp/
+temp/
+
+# ---------- Large / local-only data (COMMENTED OUT ON PURPOSE) ----------
+# Your CSVs are small and are REQUIRED deliverables, so they stay tracked.
+# Only uncomment patterns like these if you later add big or licensed files:
+# *.zip
+# data/raw/large_file.csv

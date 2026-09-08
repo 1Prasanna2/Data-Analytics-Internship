@@ -1,6 +1,6 @@
 # 📊 Data Analytics Internship — 45-Day Program
 
-**Intern:** [Your Name] · **Track:** Data Analytics · **Level:** 1
+**Intern:** Prasanna D Shetty · **Track:** Data Analytics · **Level:** 1
 
 Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 

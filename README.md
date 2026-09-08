@@ -1,4 +1,4 @@
-# 📊 Data Analytics Internship — 30-Day Program
+# 📊 Data Analytics Internship — 45-Day Program
 
 **Intern:** [Your Name] · **Track:** Data Analytics · **Level:** 1
 

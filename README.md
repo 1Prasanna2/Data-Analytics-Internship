@@ -9,7 +9,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | Day | Date | Task | Folder | Status | Key Outcome |
 |:---:|:----:|------|:------:|:------:|-------------|
 | 1 | 08-09-2026 | Data Cleaning & Preprocessing | [📁 day-01](day-1/data-cleaning-preprocessing/README.md) | ✅ Done | Cleaned 9,994-row Superstore file; fixed 7 quality issues, 17 duplicate rows removed (0.17%) |
-| 2 | - | *[-]* | [📁 day-02](-) | 🚧 Pending... | — |
+| 2 | 09-09-2026 | EDA | [📁 day-02](day-2/EDA) |✅ Done | Explore the dataset to find meaningful insights and built visualization to display it |
 | 3 | | | | ⬜ Not Started | — |
 | 4 | | | | ⬜ Not Started | — |
 | 5 | | | | ⬜ Not Started | — |

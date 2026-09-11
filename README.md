@@ -11,7 +11,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 1 | 08-09-2026 | Data Cleaning & Preprocessing | [📁 day-01](day-1/data-cleaning-preprocessing/README.md) | ✅ Done | Cleaned 9,994-row Superstore file; fixed 7 quality issues, 17 duplicate rows removed (0.17%) |
 | 2 | 09-09-2026 | EDA | [📁 day-02](day-2/EDA) |✅ Done | Explore the dataset to find meaningful insights and built visualization to display it |
 | 3 | 10-09-2026 | Sales Dashboard Design | [📁 day-03](day-3/)| ✅ Done | Createad a Simple Sales Dashboard to visualize the data with month wise , region wise and category wise filters |
-| 4 | | | | ⬜ Not Started | — |
+| 4 | 11-09-2026 | Data Visualization & Storytelling |  [📁 day-04](day-4/) | ✅ Done | Visualized and Provided a story about the data for Sales Dataset explaining the various nitpicks and problem and solution |
 | 5 | | | | ⬜ Not Started | — |
 
 **Status legend:** ✅ Done · 🚧 In Progress · ⬜ Not Started · 🔁 Revision requested

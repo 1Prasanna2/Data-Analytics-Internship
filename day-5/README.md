@@ -36,7 +36,8 @@ Analyze a structured dataset end-to-end using core Excel tools.
 
 | Tab | Purpose | Key Contents |
 |---|---|---|
-| `RawData` | Protected source of truth | Data pasted as an Excel Table named **`RawData`** (Ctrl+T), top row frozen, **never edited** |
+| `RawData` | Protected source of truth | Data pasted as an Excel Table named **`RawData`** 
+, top row frozen, **never edited** |
 | `Working` | Formula-driven analysis | KPI cells built with `SUM`, `SUMIFS`, `COUNTIFS`, `AVERAGEIFS`; discount-band profit analysis |
 | `PivotsTables` | Five PivotTables, one business question each | Sorted/filtered pivots + value filters for loss-makers |
 | `Summary` | Executive view | KPI strip, one-paragraph findings summary, recommendations |
@@ -119,7 +120,7 @@ day-5-excel-analytics/
     └── pivot-tables_tab.png
     └── raw_data_tab.png
     └── summary_tab.png
-    └── working-formula_tab.png                                  # optional tab/pivot screenshots
+    └── working-formula_tab.png            #screenshots
 ```
 
 ## 🔁 How to Reproduce
@@ -137,4 +138,4 @@ day-5-excel-analytics/
 [Day 4 – Visual Story](../day-4/) ·
 
 **Day 5 – Excel Analytics** ·
-LinkedIn post:  [https://lnkd.in/p/dKRT5mut]
+LinkedIn post: [https://lnkd.in/p/dKRT5mut]

@@ -135,5 +135,6 @@ day-5-excel-analytics/
 ## 🔗 Series
 
 [Day 4 – Visual Story](../day-4/) ·
+
 **Day 5 – Excel Analytics** ·
-LinkedIn post: [link]
+LinkedIn post:  [https://lnkd.in/p/dKRT5mut]

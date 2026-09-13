@@ -13,6 +13,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 3 | 10-09-2026 | Sales Dashboard Design | [📁 day-03](day-3/)| ✅ Done | Createad a Simple Sales Dashboard to visualize the data with month wise , region wise and category wise filters |
 | 4 | 11-09-2026 | Data Visualization & Storytelling |  [📁 day-04](day-4/) | ✅ Done | Visualized and Provided a story about the data for Sales Dataset explaining the various nitpicks and problem and solution |
 | 5 | 12-09-2026 | Excel Data Analytics | [📁 day-05](day-5/) | ✅ Done | Doing Excel Analytics on the Dataset |
+| 6 | 13-09-2026 | Excel Formulas and Function Fundamentals | [📁 day-06](day-6/) | ✅ Done | Knowing and Using Core Excel Functions and Formulas for Decision Making and Data Insights |
 
 **Status legend:** ✅ Done · 🚧 In Progress · ⬜ Not Started · 🔁 Revision requested
 

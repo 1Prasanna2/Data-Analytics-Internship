@@ -14,6 +14,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 4 | 11-09-2026 | Data Visualization & Storytelling |  [📁 day-04](day-4/) | ✅ Done | Visualized and Provided a story about the data for Sales Dataset explaining the various nitpicks and problem and solution |
 | 5 | 12-09-2026 | Excel Data Analytics | [📁 day-05](day-5/) | ✅ Done | Doing Excel Analytics on the Dataset |
 | 6 | 13-09-2026 | Excel Formulas and Function Fundamentals | [📁 day-06](day-6/) | ✅ Done | Knowing and Using Core Excel Functions and Formulas for Decision Making and Data Insights |
+| 7 | 14-09-2026 | Turning Numbers into Narrative | [📁 day-07](day-7/) | ✅ Done | Chart Story for the Iris Dataset turning numbers into narrative |
 
 **Status legend:** ✅ Done · 🚧 In Progress · ⬜ Not Started · 🔁 Revision requested
 

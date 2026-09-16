@@ -16,6 +16,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 6 | 13-09-2026 | Excel Formulas and Function Fundamentals | [📁 day-06](day-6/) | ✅ Done | Knowing and Using Core Excel Functions and Formulas for Decision Making and Data Insights |
 | 7 | 14-09-2026 | Turning Numbers into Narrative | [📁 day-07](day-7/) | ✅ Done | Chart Story for the Iris Dataset turning numbers into narrative |
 | 8 | 15-09-2026 | Sale Tracker in Google Sheets | [📁 day-08](day-8/) | ✅ Done | Google SpreadSheet on Retail Sales Dataset |
+| 9 | 16-09-2026 | Descriptive Statistics Primer | [📁 day-09](day-9/) | ✅ Done | Applied Stats to find mean, median and more on the dataset of Iris |
 
 **Status legend:** ✅ Done · 🚧 In Progress · ⬜ Not Started · 🔁 Revision requested
 

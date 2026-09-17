@@ -113,7 +113,7 @@ day-10-kpi-tracker/
 
 ## 🔗 Series
 
-[Day 9 – Descriptive Statistics](../day-9-descriptive-statistics/) · 
+[Day 9 – Descriptive Statistics](../day-9/) · 
 
 **Day 10 – KPI Tracking Sheet** ·
 LinkedIn post: [link](https://lnkd.in/p/eBGr_m_g)

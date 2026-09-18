@@ -18,6 +18,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 8 | 15-09-2026 | Sale Tracker in Google Sheets | [📁 day-08](day-8/) | ✅ Done | Google SpreadSheet on Retail Sales Dataset |
 | 9 | 16-09-2026 | Descriptive Statistics Primer | [📁 day-09](day-9/) | ✅ Done | Applied Stats to find mean, median and more on the dataset of Iris |
 | 10 | 17-09-2026 | Simple KPI Tracking Sheet | [📁 day-10](day-10/) | ✅ Done | Auto Updating KPI Summary Sheet for each new row added |
+| 11 | 18-09-2026 | Basic Data Sorting and Filtering | [📁 day-11](day-11/) | ✅ Done | Doing basic stuff on the Superstore Dataset |
 
 **Status legend:** ✅ Done · 🚧 In Progress · ⬜ Not Started · 🔁 Revision requested
 

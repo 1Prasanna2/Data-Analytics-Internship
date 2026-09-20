@@ -1,0 +1,148 @@
+Order_ID,Order_Date,Customer_ID,Customer_Age,Gender,City,Product_Category,Product,Quantity,Unit_Price,Discount_Pct,Total_Amount,Payment_Method,Customer_Rating,Delivery_Days,Returned
+ORD1002,28-02-2026,CUST10012,35,Other,Mumbai,Home & Kitchen,Water Bottle,2,"? 6,292",20,"? 10,067",Net Banking,1,7,Yes
+ORD1003,23-04-2026,CUST10036,56,Other,Pune,Electronics,Keyboard,2,"? 6,120",20,"? 9,792",Net Banking,4,4,No
+ORD1004,05-01-2026,CUST10046,45,Other,Navi Mumbai,Clothing,Kurta,2,"? 1,924",25,"? 2,886",Debit Card,1,2,No
+ORD1005,27-06-2026,CUST10091,47,Male,Nashik,Sports,Yoga Mat,4,,5,,Net Banking,5,6,No
+ORD1006,06-02-2026,CUST10046,32,Other,Mumbai,Clothing,T-Shirt,2,"? 7,381",10,"? 13,286",Debit Card,4,6,No
+ORD1007,19-04-2026,CUST10119,61,,Nashik,Grocery,Rice,5,"? 5,441",15,"? 23,125",Credit Card,2,8,No
+ORD1008,24-04-2026,CUST10064,32,Male,Nagpur,Electronics,Smart Watch,4,"? 2,364",0,"? 9,455",Net Banking,5,6,No
+ORD1009,23-07-2026,CUST10018,,Male,Ahmedabad,Home & Kitchen,Water Bottle,5,"? 4,637",20,"? 18,547",Net Banking,4,7,No
+ORD1010,19-09-2026,CUST10060,21,Male,Ahmedabad,Electronics,Power Bank,2,"? 6,758",10,"? 12,164",Net Banking,1,7,No
+ORD1011,10-05-2026,CUST10001,25,Other,Mumbai,Grocery,Dry Fruits,3,"? 6,561",5,"? 18,698",UPI,3,7,No
+ORD1012,16-05-2026,CUST10100,24,Other,Navi Mumbai,Grocery,Biscuits,5,"? 5,223",0,"? 26,116",Debit Card,5,3,No
+ORD1013,02-01-2026,CUST10105,19,Female,Nagpur,Electronics,Smart Watch,3,"? 2,127",0,"? 6,380",Net Banking,1,2,No
+ORD1014,06-02-2026,CUST10097,60,Male,,Beauty,Lip Balm,2,"? 2,341",25,"? 3,512",Net Banking,4,4,No
+ORD1015,14-04-2026,CUST10003,60,Female,Nashik,Grocery,Biscuits,4,"? 7,659",10,"? 27,572",UPI,2,4,Yes
+ORD1016,29-04-2026,CUST10086,22,Male,Pune,Grocery,Rice,2,? 685,0,"? 1,370",Debit Card,,9,No
+ORD1017,07-09-2026,CUST10013,26,Other,Pune,Grocery,Dry Fruits,5,"? 4,081",25,"? 15,304",Cash,5,7,No
+ORD1018,10-08-2026,CUST10025,44,Female,Nagpur,Beauty,Face Wash,1,? 628,,,Debit Card,5,2,No
+ORD1019,19-08-2026,CUST10084,29,Female,Navi Mumbai,Clothing,Hoodie,2,"? 7,448",0,"? 14,896",Cash,5,9,Yes
+ORD1020,09-01-2026,CUST10050,28,Male,Thane,,Sunscreen,4,"? 1,911",10,"? 6,880",UPI,2,7,Yes
+ORD1021,17-05-2026,CUST10041,45,Female,Ahmedabad,Grocery,Dry Fruits,4,"? 1,417",5,"? 5,385",Credit Card,1,9,Yes
+ORD1022,31-01-2026,CUST10009,48,Other,Mumbai,Sports,Running Shoes,2,? 597,15,"? 1,014",UPI,5,,Yes
+ORD1023,02-05-2026,CUST10034,54,Male,Surat,Home & Kitchen,Table Lamp,5,? 453,0,"? 2,265",Cash,5,9,No
+ORD1024,16-04-2026,CUST10073,,Male,Nagpur,Beauty,Shampoo,3,"? 3,952",25,"? 8,891",UPI,1,8,No
+ORD1025,22-02-2026,CUST10107,31,Other,Thane,Sports,Football,2,"? 7,941",0,"? 15,881",Credit Card,3,5,No
+ORD1026,05-06-2026,CUST10027,53,Other,Mumbai,Clothing,T-Shirt,2,"? 2,336",0,"? 4,672",,2,5,No
+ORD1027,26-06-2026,CUST10006,58,Other,Pune,Clothing,Sneakers,4,"? 2,224",25,"? 6,673",UPI,1,7,No
+ORD1028,03-01-2026,CUST10114,58,Male,Nagpur,Clothing,Jeans,4,"? 4,743",10,"? 17,075",Net Banking,1,2,Yes
+ORD1029,19-03-2026,CUST10027,55,Female,Mumbai,Sports,Cricket Bat,4,"? 1,188",5,"? 4,514",Debit Card,5,1,No
+ORD1030,09-05-2026,CUST10004,53,Female,Thane,Beauty,Lip Balm,2,,0,,Credit Card,5,3,No
+ORD1031,03-04-2026,CUST10029,60,Female,Nagpur,Grocery,Coffee,3,"? 1,454",20,"? 3,490",UPI,4,1,No
+ORD1032,14-04-2026,CUST10036,37,Female,Ahmedabad,Home & Kitchen,Water Bottle,1,"? 5,651",10,"? 5,086",Debit Card,3,2,No
+ORD1033,30-06-2026,CUST10077,52,,Surat,Clothing,T-Shirt,1,"? 7,470",5,"? 7,096",Credit Card,4,5,Yes
+ORD1034,12-08-2026,CUST10001,38,Other,Nagpur,Beauty,Lip Balm,5,"? 1,089",15,"? 4,629",Credit Card,3,1,No
+ORD1035,12-04-2026,CUST10086,22,Female,Nagpur,Grocery,Biscuits,5,"? 2,751",25,"? 10,315",UPI,5,5,No
+ORD1036,30-07-2026,CUST10039,62,Female,Nagpur,Clothing,Sneakers,2,"? 1,728",20,"? 2,764",Cash,5,3,
+ORD1037,28-07-2026,CUST10066,36,Female,Mumbai,Home & Kitchen,Storage Box,5,"? 5,204",5,"? 24,718",Cash,4,8,No
+ORD1038,01-09-2026,CUST10026,23,Other,Navi Mumbai,Clothing,Sneakers,5,"? 2,929",25,"? 10,983",Credit Card,5,5,No
+ORD1039,18-03-2026,CUST10032,33,Male,Mumbai,Beauty,Lip Balm,1,"? 3,936",,,Net Banking,2,7,No
+ORD1040,18-03-2026,CUST10103,45,Male,Mumbai,Home & Kitchen,Water Bottle,5,"? 4,013",15,"? 17,055",Credit Card,5,2,No
+ORD1041,27-08-2026,CUST10097,57,Female,Nagpur,Grocery,Dry Fruits,4,"? 7,080",15,"? 24,073",Cash,2,8,No
+ORD1042,08-05-2026,CUST10115,49,Other,,Grocery,Coffee,3,"? 3,806",20,"? 9,135",Debit Card,2,5,No
+ORD1043,12-02-2026,CUST10027,32,Male,Navi Mumbai,Beauty,Shampoo,2,? 658,10,"? 1,185",Debit Card,4,8,No
+ORD1044,05-08-2026,CUST10107,62,Other,Surat,Electronics,Keyboard,4,"? 4,117",5,"? 15,645",Debit Card,5,7,No
+ORD1045,04-08-2026,CUST10118,32,Female,Pune,Clothing,Hoodie,4,? 363,5,"? 1,380",Cash,5,,No
+ORD1046,08-03-2026,CUST10042,55,Female,Mumbai,Sports,Yoga Mat,1,"? 5,506",0,"? 5,506",Cash,2,1,No
+ORD1047,20-04-2026,CUST10045,39,Female,Ahmedabad,,Moisturizer,4,"? 2,234",0,"? 8,936",Cash,1,9,Yes
+ORD1048,26-04-2026,CUST10015,20,Other,Thane,Electronics,Power Bank,2,"? 7,153",15,"? 12,160",Credit Card,2,3,No
+ORD1049,23-04-2026,CUST10014,34,Other,Ahmedabad,Clothing,Jeans,5,"? 5,209",20,"? 20,835",UPI,5,3,No
+ORD1050,15-01-2026,CUST10077,,Other,Nashik,Beauty,Sunscreen,2,? 757,20,"? 1,211",Credit Card,1,5,No
+ORD1051,04-03-2026,CUST10014,52,Female,Mumbai,Beauty,Moisturizer,1,"? 4,360",5,"? 4,142",UPI,5,7,No
+ORD1052,11-08-2026,CUST10060,47,Other,Nagpur,Grocery,Coffee,4,"? 1,596",15,"? 5,427",Debit Card,4,9,No
+ORD1053,13-08-2026,CUST10064,33,Female,Nashik,Electronics,Smart Watch,4,"? 2,164",10,"? 7,789",Net Banking,4,7,No
+ORD1054,17-06-2026,CUST10025,31,Female,Navi Mumbai,Clothing,Kurta,3,"? 2,464",15,"? 6,282",,4,1,No
+ORD1055,14-02-2026,CUST10029,44,Other,Pune,Beauty,Lip Balm,2,"? 5,907",20,"? 9,452",Cash,4,1,Yes
+ORD1056,28-07-2026,CUST10090,60,Female,Pune,Sports,Football,4,"? 4,758",5,"? 18,081",Cash,5,9,No
+ORD1057,22-08-2026,CUST10095,34,Female,Nashik,Home & Kitchen,Mixer Grinder,2,"? 2,764",20,"? 4,423",Net Banking,5,3,No
+ORD1058,06-09-2026,CUST10039,55,Other,Nashik,Sports,Running Shoes,3,"? 8,337",25,"? 18,758",Credit Card,3,4,No
+ORD1059,09-01-2026,CUST10061,20,Female,Navi Mumbai,Electronics,Keyboard,3,"? 5,964",0,"? 17,893",Cash,1,1,No
+ORD1060,04-09-2026,CUST10088,29,Female,Ahmedabad,Electronics,Smart Watch,4,"? 1,076",0,"? 4,304",Cash,4,2,No
+ORD1061,29-01-2026,CUST10049,54,,Navi Mumbai,Clothing,T-Shirt,2,"? 1,113",25,"? 1,669",Cash,4,4,No
+ORD1062,20-08-2026,CUST10034,55,Female,Ahmedabad,Beauty,Moisturizer,5,"? 5,324",15,"? 22,628",UPI,5,4,No
+ORD1063,12-02-2026,CUST10037,29,Male,Navi Mumbai,Sports,Yoga Mat,2,? 142,10,? 256,Net Banking,,5,Yes
+ORD1064,26-05-2026,CUST10020,61,Male,Ahmedabad,Home & Kitchen,Cookware Set,5,"? 5,661",0,"? 28,304",Cash,1,9,No
+ORD1065,18-05-2026,CUST10039,21,Male,Navi Mumbai,Home & Kitchen,Cookware Set,5,"? 6,396",15,"? 27,184",Debit Card,4,2,No
+ORD1067,12-01-2026,CUST10063,20,Other,Nashik,Home & Kitchen,Storage Box,5,"? 5,580",5,"? 26,503",Credit Card,4,7,No
+ORD1068,17-02-2026,CUST10052,44,Female,Ahmedabad,Clothing,Kurta,1,,5,,Cash,5,8,No
+ORD1069,20-01-2026,CUST10070,38,Male,,Clothing,Kurta,1,"? 8,250",10,"? 7,425",Net Banking,5,1,No
+ORD1070,26-08-2026,CUST10071,30,Male,Surat,Sports,Football,5,"? 6,459",20,"? 25,836",Cash,5,1,
+ORD1071,10-03-2026,CUST10002,62,Female,Nashik,Beauty,Face Wash,1,"? 8,275",15,"? 7,034",Credit Card,5,3,No
+ORD1072,29-07-2026,CUST10062,25,Male,Thane,Beauty,Face Wash,2,"? 4,296",20,"? 6,874",Debit Card,4,5,No
+ORD1073,31-08-2026,CUST10102,,Female,Pune,Home & Kitchen,Storage Box,2,"? 7,845",15,"? 13,337",Credit Card,5,2,No
+ORD1074,02-08-2026,CUST10062,35,Other,Nagpur,Electronics,Smart Watch,3,"? 7,138",15,"? 18,202",Cash,5,3,No
+ORD1075,27-06-2026,CUST10100,52,Other,Nagpur,Beauty,Sunscreen,3,"? 7,407",,,Credit Card,4,7,No
+ORD1076,31-07-2026,CUST10076,48,Female,Mumbai,Grocery,Olive Oil,4,"? 8,403",25,"? 25,209",Credit Card,4,1,Yes
+ORD1077,20-06-2026,CUST10034,24,Female,Thane,Sports,Dumbbells,1,"? 6,174",10,"? 5,557",Credit Card,1,8,No
+ORD1078,24-06-2026,CUST10009,23,Other,Surat,Clothing,Sneakers,4,"? 8,116",20,"? 25,970",Cash,5,9,Yes
+ORD1079,02-05-2026,CUST10008,23,Male,Nashik,,Face Wash,1,"? 3,838",20,"? 3,070",Debit Card,1,1,No
+ORD1080,01-06-2026,CUST10112,45,Female,Nagpur,Home & Kitchen,Water Bottle,5,"? 3,573",20,"? 14,292",Credit Card,2,3,Yes
+ORD1081,16-07-2026,CUST10060,55,Female,Pune,Home & Kitchen,Water Bottle,4,"? 5,466",10,"? 19,676",Debit Card,5,1,No
+ORD1082,29-05-2026,CUST10050,46,Male,Navi Mumbai,Clothing,Sneakers,3,"? 5,474",10,"? 14,781",Debit Card,4,5,No
+ORD1083,06-09-2026,CUST10073,42,Male,Thane,Sports,Football,5,"? 2,599",20,"? 10,398",Debit Card,1,7,No
+ORD1084,27-01-2026,CUST10116,32,Female,Ahmedabad,Sports,Football,2,"? 5,455",15,"? 9,273",Debit Card,5,3,No
+ORD1085,22-01-2026,CUST10017,20,Female,Nashik,Sports,Football,2,? 875,5,"? 1,663",Debit Card,5,,No
+ORD1086,08-07-2026,CUST10093,34,Male,Nashik,Beauty,Moisturizer,3,,10,,UPI,2,4,No
+ORD1087,24-07-2026,CUST10048,43,Male,Nagpur,Electronics,Smart Watch,5,"? 1,156",5,"? 5,489",Debit Card,4,7,No
+ORD1088,26-02-2026,CUST10039,19,Female,Pune,Sports,Running Shoes,3,"? 7,790",0,"? 23,370",UPI,5,8,No
+ORD1089,30-07-2026,CUST10086,20,Male,Thane,Electronics,Smart Watch,4,"? 1,093",0,"? 4,372",Net Banking,2,7,No
+ORD1090,04-08-2026,CUST10057,59,,Navi Mumbai,Electronics,Bluetooth Speaker,5,"? 3,540",5,"? 16,815",UPI,5,6,No
+ORD1091,02-05-2026,CUST10028,61,Male,Nagpur,Clothing,Sneakers,3,? 627,5,"? 1,788",Credit Card,1,8,Yes
+ORD1092,12-01-2026,CUST10030,33,Female,Mumbai,Home & Kitchen,Table Lamp,2,? 695,25,"? 1,042",,2,4,No
+ORD1093,19-06-2026,CUST10046,18,Other,Navi Mumbai,Clothing,Jeans,2,"? 4,647",25,"? 6,971",Credit Card,1,1,Yes
+ORD1094,03-05-2026,CUST10100,29,Male,Nagpur,Clothing,T-Shirt,2,"? 6,336",15,"? 10,771",UPI,5,2,No
+ORD1095,06-07-2026,CUST10004,50,Female,Thane,Home & Kitchen,Table Lamp,1,"? 6,214",25,"? 4,661",Net Banking,3,8,No
+ORD1096,02-02-2026,CUST10009,45,Female,Ahmedabad,Grocery,Rice,4,"? 6,090",10,"? 21,924",UPI,1,6,No
+ORD1097,07-03-2026,CUST10056,,Other,Nashik,Sports,Running Shoes,3,"? 3,312",15,"? 8,446",Net Banking,3,8,No
+ORD1098,21-02-2026,CUST10094,59,Other,Thane,Sports,Cricket Bat,4,"? 3,904",0,"? 15,616",Cash,3,8,No
+ORD1099,19-02-2026,CUST10012,38,Female,Nagpur,Grocery,Biscuits,3,"? 8,111",20,"? 19,467",Cash,1,2,No
+ORD1100,11-08-2026,CUST10112,41,Other,Thane,Home & Kitchen,Table Lamp,1,"? 5,035",15,"? 4,279",Net Banking,3,2,No
+ORD1101,06-08-2026,CUST10014,56,Female,Mumbai,Clothing,Kurta,1,"? 4,963",0,"? 4,963",Credit Card,,8,No
+ORD1102,30-06-2026,CUST10119,35,Male,Nagpur,Sports,Cricket Bat,4,"? 7,202",25,"? 21,607",Net Banking,4,9,Yes
+ORD1103,18-05-2026,CUST10095,35,Male,Mumbai,Grocery,Biscuits,3,"? 3,062",0,"? 9,185",Credit Card,4,7,Yes
+ORD1104,17-01-2026,CUST10073,51,Other,Thane,Home & Kitchen,Storage Box,4,"? 3,922",0,"? 15,686",Debit Card,3,6,No
+ORD1105,14-02-2026,CUST10028,28,Male,Mumbai,Sports,Yoga Mat,1,"? 2,400",20,"? 1,920",Cash,4,8,No
+ORD1106,01-03-2026,CUST10008,25,Female,Nagpur,Clothing,Sneakers,4,"? 4,536",5,"? 17,236",UPI,2,7,
+ORD1107,05-01-2026,CUST10049,31,Female,Pune,Home & Kitchen,Cookware Set,3,"? 2,870",0,"? 8,609",Cash,5,7,No
+ORD1108,29-04-2026,CUST10091,43,Male,,Grocery,Rice,4,? 277,0,"? 1,108",Debit Card,4,7,No
+ORD1109,03-08-2026,CUST10109,43,Male,Nashik,Electronics,Smart Watch,2,"? 6,835",15,"? 11,620",Cash,5,6,Yes
+ORD1110,25-02-2026,CUST10010,55,Female,Pune,Beauty,Lip Balm,1,"? 3,437",5,"? 3,265",Debit Card,2,6,No
+ORD1111,01-03-2026,CUST10084,40,Female,Pune,,Coffee,2,? 982,5,"? 1,865",Credit Card,2,3,No
+ORD1112,09-02-2026,CUST10009,49,Other,Navi Mumbai,Beauty,Lip Balm,5,"? 3,882",15,"? 16,498",Net Banking,3,6,No
+ORD1113,30-08-2026,CUST10048,37,Other,Ahmedabad,Clothing,Sneakers,1,"? 3,069",0,"? 3,069",Debit Card,4,8,Yes
+ORD1114,28-05-2026,CUST10104,23,,Thane,Sports,Running Shoes,5,"? 3,342",15,"? 14,203",Net Banking,5,1,No
+ORD1115,08-04-2026,CUST10023,48,Other,Nagpur,Sports,Cricket Bat,1,"? 3,895",25,"? 2,922",Debit Card,5,2,No
+ORD1116,22-01-2026,CUST10044,46,Other,Pune,Beauty,Lip Balm,5,"? 5,230",5,"? 24,843",Debit Card,3,7,No
+ORD1117,28-01-2026,CUST10075,39,Male,Nagpur,Electronics,Keyboard,4,"? 2,501",,,Net Banking,5,3,No
+ORD1118,15-03-2026,CUST10043,59,Female,Nagpur,Grocery,Olive Oil,2,"? 5,106",0,"? 10,213",Debit Card,4,7,No
+ORD1120,10-04-2026,CUST10080,27,Male,Pune,Electronics,Smart Watch,1,,15,,Net Banking,1,6,No
+ORD1121,10-03-2026,CUST10079,28,Male,Surat,Home & Kitchen,Table Lamp,2,"? 6,164",0,"? 12,327",Cash,3,4,No
+ORD1122,27-05-2026,CUST10037,52,Male,Ahmedabad,Home & Kitchen,Cookware Set,4,"? 7,695",0,"? 30,781",Debit Card,5,8,No
+ORD1123,16-07-2026,CUST10067,,Male,Surat,Sports,Cricket Bat,3,? 557,10,"? 1,505",Debit Card,4,2,No
+ORD1124,06-03-2026,CUST10120,28,Male,Nashik,Clothing,Hoodie,5,"? 1,355",10,"? 6,097",UPI,2,8,No
+ORD1125,15-01-2026,CUST10013,43,Male,Surat,Sports,Football,2,"? 3,356",0,"? 6,712",Debit Card,2,,No
+ORD1126,22-06-2026,CUST10003,20,Male,Navi Mumbai,Clothing,Hoodie,2,"? 6,479",10,"? 11,662",Cash,4,1,No
+ORD1127,13-05-2026,CUST10031,53,Male,Pune,Grocery,Dry Fruits,5,"? 3,667",25,"? 13,751",Debit Card,2,5,Yes
+ORD1128,04-08-2026,CUST10001,25,Male,Ahmedabad,Beauty,Lip Balm,5,? 258,15,"? 1,095",,2,3,No
+ORD1129,01-07-2026,CUST10065,44,Other,Pune,Home & Kitchen,Mixer Grinder,5,"? 8,288",0,"? 41,438",Net Banking,4,9,No
+ORD1130,12-01-2026,CUST10094,20,Female,Surat,Grocery,Olive Oil,3,"? 2,246",0,"? 6,737",Debit Card,5,2,No
+ORD1131,24-02-2026,CUST10104,20,Male,Nagpur,Clothing,Sneakers,3,"? 6,937",0,"? 20,812",Cash,5,8,No
+ORD1132,12-03-2026,CUST10105,47,Other,Thane,Electronics,Smart Watch,2,? 487,0,? 974,UPI,3,5,No
+ORD1133,01-09-2026,CUST10056,59,Male,Nashik,Home & Kitchen,Cookware Set,3,"? 7,345",0,"? 22,034",Debit Card,3,2,No
+ORD1134,25-07-2026,CUST10011,39,Female,Ahmedabad,Home & Kitchen,Storage Box,4,"? 3,198",25,"? 9,595",Net Banking,3,2,No
+ORD1135,10-08-2026,CUST10057,36,Other,Navi Mumbai,Clothing,T-Shirt,1,"? 2,868",5,"? 2,725",Debit Card,,7,No
+ORD1136,30-06-2026,CUST10103,40,Male,Ahmedabad,Sports,Dumbbells,3,"? 5,479",25,"? 12,327",UPI,1,7,No
+ORD1137,24-03-2026,CUST10005,56,Male,Mumbai,Grocery,Olive Oil,1,"? 1,178",0,"? 1,178",Debit Card,3,7,No
+ORD1138,21-03-2026,CUST10015,41,Female,Ahmedabad,Beauty,Face Wash,5,"? 1,274",5,"? 6,051",Cash,3,5,No
+ORD1139,15-01-2026,CUST10063,51,Female,,Beauty,Lip Balm,1,"? 2,314",5,"? 2,198",Cash,2,5,No
+ORD1140,14-04-2026,CUST10071,22,Male,Thane,Beauty,Shampoo,4,"? 8,477",25,"? 25,431",Debit Card,5,6,No
+ORD1141,30-05-2026,CUST10064,62,Male,Nashik,Grocery,Coffee,3,"? 4,383",0,"? 13,150",Credit Card,5,3,No
+ORD1142,15-01-2026,CUST10093,54,Other,Nagpur,Clothing,Hoodie,5,"? 1,207",0,"? 6,037",UPI,3,7,No
+ORD1143,04-09-2026,CUST10113,54,Female,Surat,Electronics,Power Bank,3,"? 5,503",10,"? 14,858",Cash,5,9,No
+ORD1144,05-04-2026,CUST10067,50,Female,Navi Mumbai,Electronics,Wireless Earbuds,5,"? 1,402",,,Credit Card,3,4,No
+ORD1145,27-05-2026,CUST10022,,Female,Thane,Grocery,Dry Fruits,3,"? 1,169",5,"? 3,331",Net Banking,4,2,No
+ORD1146,21-03-2026,CUST10083,57,Other,Navi Mumbai,Grocery,Dry Fruits,3,"? 7,180",15,"? 18,310",UPI,5,1,Yes
+ORD1147,17-05-2026,CUST10104,44,Other,Pune,Sports,Yoga Mat,4,"? 7,570",15,"? 25,737",Debit Card,5,5,No
+ORD1148,28-07-2026,CUST10041,22,Female,Nashik,Grocery,Rice,2,"? 3,804",10,"? 6,847",Cash,2,6,No
+ORD1149,14-06-2026,CUST10019,26,Female,Nagpur,Clothing,Sneakers,5,"? 1,010",0,"? 5,049",Cash,1,5,No
+ORD1151,14-09-2026,CUST10007,37,Female,Ahmedabad,Beauty,Face Wash,1,"? 8,041",15,"? 6,835",Cash,2,4,

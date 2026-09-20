@@ -20,7 +20,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 10 | 17-09-2026 | Simple KPI Tracking Sheet | [📁 day-10](day-10/) | ✅ Done | Auto Updating KPI Summary Sheet for each new row added |
 | 11 | 18-09-2026 | Basic Data Sorting and Filtering | [📁 day-11](day-11/) | ✅ Done | Doing basic stuff on the Superstore Dataset |
 | 12 | 19-09-2026 | Missing Value Identification | [📁 day-12](day-12/) | ✅ Done | Identifying missing values in the dataset using Pandas and Excel |
-| 12 | 20-09-2026 | Duplicate Record Check | [📁 day-13](day-13/) | ✅ Done | Finding duplicate records and auditing it. |
+| 13 | 20-09-2026 | Duplicate Record Check | [📁 day-13](day-13/) | ✅ Done | Finding duplicate records and auditing it. |
 
 
 **Status legend:** ✅ Done · 🚧 In Progress · ⬜ Not Started · 🔁 Revision requested

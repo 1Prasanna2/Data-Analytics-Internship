@@ -111,4 +111,5 @@ day-13-duplicate-check/
 ## 🔗 Series
 [Day 12 – Missing Values](../day-12-missing-values/) ·
 
-**Day 13 – Duplicate Check** · LinkedIn post: [link]
+**Day 13 – Duplicate Check** 
+· LinkedIn post: [link](https://lnkd.in/p/dnzX2qBJ)

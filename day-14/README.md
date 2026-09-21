@@ -102,7 +102,7 @@ day-14-sales-summary/
 
 ## 🔗 Series
 
-[Day 13 – Duplicate Check](../day-13-duplicate-check/) · 
+[Day 13 – Duplicate Check](../day-13/) · 
 
 **Day 14 – Basic Sales Summary** ·
 LinkedIn post: [link](https://lnkd.in/p/d2ipNQiT)

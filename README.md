@@ -22,7 +22,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 12 | 19-09-2026 | Missing Value Identification | [📁 day-12](day-12/) | ✅ Done | Identifying missing values in the dataset using Pandas and Excel |
 | 13 | 20-09-2026 | Duplicate Record Check | [📁 day-13](day-13/) | ✅ Done | Finding duplicate records and auditing it. |
 | 14 | 21-09-2026 | Basic Sales Summary | [📁 day-14](day-14/) | ✅ Done | Basic summary for the sales dataset. |
-
+| 15 | 22-09-2026 | Product Count Analysis | [📁 day-15](day-15/) | ✅ Done | Having product count of top products and sub-category |
 
 
 **Status legend:** ✅ Done · 🚧 In Progress · ⬜ Not Started · 🔁 Revision requested

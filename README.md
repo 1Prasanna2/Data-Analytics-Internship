@@ -24,7 +24,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 14 | 21-09-2026 | Basic Sales Summary | [📁 day-14](day-14/) | ✅ Done | Basic summary for the sales dataset. |
 | 15 | 22-09-2026 | Product Count Analysis | [📁 day-15](day-15/) | ✅ Done | Having product count of top products and sub-category |
 | 16 | 23-09-2026 | Simple Profit Analysis | [📁 day-16](day-16/) | ✅ Done | Doing Profit Analysis on the Sample Superstore Dataset |
-
+| 17 | 24-09-2026 | Monthly Sales Trend | [📁 day-17](day-17/) | ✅ Done | Calculating sales trend by month with sales and profit calculation |
 
 **Status legend:** ✅ Done · 🚧 In Progress · ⬜ Not Started · 🔁 Revision requested
 

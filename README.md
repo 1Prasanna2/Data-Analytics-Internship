@@ -28,6 +28,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 18 | 25-09-2026 | Region Performance | [📁 day-18](day-18/) | ✅ Done | Comparing sales across regions |
 | 19 | 26-09-2026 | Top 10 Products | [📁 day-19](day-19/) | ✅ Done | Identifying TOP-10 Products by sales |
 | 20 | 27-09-2026 | HR Attrition Dashboard | [📁 day-20](day-20/) | ✅ Done | Building dashboard showing attrition by department, role and tenure |
+| 21 | 28-09-2026 | A/B Test Exploratory Analysis | [📁 day-21](day-21/) | ✅ Done | Compare conversion rates for two variants and estimate uncertanity. |
 
 **Status legend:** ✅ Done · 🚧 In Progress · ⬜ Not Started · 🔁 Revision requested
 

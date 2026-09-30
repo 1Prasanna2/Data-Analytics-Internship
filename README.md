@@ -30,6 +30,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 20 | 27-09-2026 | HR Attrition Dashboard | [📁 day-20](day-20/) | ✅ Done | Building dashboard showing attrition by department, role and tenure |
 | 21 | 28-09-2026 | A/B Test Exploratory Analysis | [📁 day-21](day-21/) | ✅ Done | Compare conversion rates for two variants and estimate uncertanity. |
 | 22 | 29-09-2026 | Cohort Retention Basics | [📁 day-22](day-22/) | ✅ Done | Building a cohort retention table by signup month |
+| 23 | 30-09-2026 | SQL Window Functions Intro | [📁 day-23](day-23/) | ✅ Done | Learning analytical SQL Patterns |
 
 **Status legend:** ✅ Done · 🚧 In Progress · ⬜ Not Started · 🔁 Revision requested
 

@@ -1,0 +1,1214 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>Online Retail II - SQL Business Analysis</title>
+
+<style>
+
+@page {
+    size: A4 landscape;
+    margin: 15mm;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    color: #222;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.query-section {
+    page-break-before: always;
+    margin-bottom: 30px;
+}
+
+.query-section:first-of-type {
+    page-break-before: auto;
+}
+
+h2 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 8px;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+pre {
+    background: #f4f4f4;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+    font-size: 12px;
+}
+
+.output-table {
+    font-family: "Uber Move",Arial, sans-serif; 
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+}
+
+.output-table th {
+    background: #eaeaea;
+    font-weight: bold;
+    border: 1px solid #999;
+    padding: 7px;
+}
+
+.output-table td {
+    border: 1px solid #bbb;
+    padding: 7px;
+}
+
+.output-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Online Retail II – SQL Business Analysis</h1>
+
+<div class="subtitle">
+SQL Queries and Query Outputs
+</div>
+
+
+        <section class="query-section">
+
+            <h2>0 · DATA GUARD</h2>
+
+            <h3>SQL Query</h3>
+
+            <pre><code>SELECT count(*) FILTER (WHERE ts IS NULL) AS bad_dates,
+       count(*) AS total_rows,
+       (SELECT count(*) FROM tx) AS sales_lines,
+       (SELECT count(*) FROM ret) AS return_lines,
+       any_value(&quot;InvoiceDate&quot;) AS sample_date
+FROM r;</code></pre>
+
+            <h3>Query Output</h3>
+
+            <style type="text/css">
+</style>
+<table id="T_51e67" class="output-table">
+  <thead>
+    <tr>
+      <th id="T_51e67_level0_col0" class="col_heading level0 col0" >bad_dates</th>
+      <th id="T_51e67_level0_col1" class="col_heading level0 col1" >total_rows</th>
+      <th id="T_51e67_level0_col2" class="col_heading level0 col2" >sales_lines</th>
+      <th id="T_51e67_level0_col3" class="col_heading level0 col3" >return_lines</th>
+      <th id="T_51e67_level0_col4" class="col_heading level0 col4" >sample_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_51e67_row0_col0" class="data row0 col0" >0</td>
+      <td id="T_51e67_row0_col1" class="data row0 col1" >1067371</td>
+      <td id="T_51e67_row0_col2" class="data row0 col2" >805549</td>
+      <td id="T_51e67_row0_col3" class="data row0 col3" >22951</td>
+      <td id="T_51e67_row0_col4" class="data row0 col4" >2010-07-13 11:03:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+        
+        <section class="query-section">
+
+            <h2>1 · Revenue / orders / AOV / customers</h2>
+
+            <h3>SQL Query</h3>
+
+            <pre><code>SELECT count(DISTINCT &quot;Invoice&quot;) AS orders,
+       count(*) AS sales_lines,
+       round(sum(&quot;Quantity&quot;*&quot;Price&quot;), 2) AS revenue,
+       round(
+           sum(&quot;Quantity&quot;*&quot;Price&quot;)
+           / count(DISTINCT &quot;Invoice&quot;),
+           2
+       ) AS avg_order_value,
+       count(DISTINCT &quot;Customer ID&quot;) AS customers
+FROM tx;</code></pre>
+
+            <h3>Query Output</h3>
+
+            <style type="text/css">
+</style>
+<table id="T_cc83c" class="output-table">
+  <thead>
+    <tr>
+      <th id="T_cc83c_level0_col0" class="col_heading level0 col0" >orders</th>
+      <th id="T_cc83c_level0_col1" class="col_heading level0 col1" >sales_lines</th>
+      <th id="T_cc83c_level0_col2" class="col_heading level0 col2" >revenue</th>
+      <th id="T_cc83c_level0_col3" class="col_heading level0 col3" >avg_order_value</th>
+      <th id="T_cc83c_level0_col4" class="col_heading level0 col4" >customers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_cc83c_row0_col0" class="data row0 col0" >36969</td>
+      <td id="T_cc83c_row0_col1" class="data row0 col1" >805549</td>
+      <td id="T_cc83c_row0_col2" class="data row0 col2" >17743429.180000</td>
+      <td id="T_cc83c_row0_col3" class="data row0 col3" >479.950000</td>
+      <td id="T_cc83c_row0_col4" class="data row0 col4" >5878</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+        
+        <section class="query-section">
+
+            <h2>2 · Top 10 countries by revenue</h2>
+
+            <h3>SQL Query</h3>
+
+            <pre><code>SELECT &quot;Country&quot;,
+       round(sum(&quot;Quantity&quot;*&quot;Price&quot;), 2) AS revenue,
+       count(DISTINCT &quot;Invoice&quot;) AS orders
+FROM tx
+GROUP BY 1
+ORDER BY revenue DESC
+LIMIT 10;</code></pre>
+
+            <h3>Query Output</h3>
+
+            <style type="text/css">
+</style>
+<table id="T_9f1b1" class="output-table">
+  <thead>
+    <tr>
+      <th id="T_9f1b1_level0_col0" class="col_heading level0 col0" >Country</th>
+      <th id="T_9f1b1_level0_col1" class="col_heading level0 col1" >revenue</th>
+      <th id="T_9f1b1_level0_col2" class="col_heading level0 col2" >orders</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_9f1b1_row0_col0" class="data row0 col0" >United Kingdom</td>
+      <td id="T_9f1b1_row0_col1" class="data row0 col1" >14723147.520000</td>
+      <td id="T_9f1b1_row0_col2" class="data row0 col2" >33541</td>
+    </tr>
+    <tr>
+      <td id="T_9f1b1_row1_col0" class="data row1 col0" >EIRE</td>
+      <td id="T_9f1b1_row1_col1" class="data row1 col1" >621631.110000</td>
+      <td id="T_9f1b1_row1_col2" class="data row1 col2" >567</td>
+    </tr>
+    <tr>
+      <td id="T_9f1b1_row2_col0" class="data row2 col0" >Netherlands</td>
+      <td id="T_9f1b1_row2_col1" class="data row2 col1" >554232.340000</td>
+      <td id="T_9f1b1_row2_col2" class="data row2 col2" >228</td>
+    </tr>
+    <tr>
+      <td id="T_9f1b1_row3_col0" class="data row3 col0" >Germany</td>
+      <td id="T_9f1b1_row3_col1" class="data row3 col1" >431262.460000</td>
+      <td id="T_9f1b1_row3_col2" class="data row3 col2" >789</td>
+    </tr>
+    <tr>
+      <td id="T_9f1b1_row4_col0" class="data row4 col0" >France</td>
+      <td id="T_9f1b1_row4_col1" class="data row4 col1" >355257.470000</td>
+      <td id="T_9f1b1_row4_col2" class="data row4 col2" >614</td>
+    </tr>
+    <tr>
+      <td id="T_9f1b1_row5_col0" class="data row5 col0" >Australia</td>
+      <td id="T_9f1b1_row5_col1" class="data row5 col1" >169968.110000</td>
+      <td id="T_9f1b1_row5_col2" class="data row5 col2" >95</td>
+    </tr>
+    <tr>
+      <td id="T_9f1b1_row6_col0" class="data row6 col0" >Spain</td>
+      <td id="T_9f1b1_row6_col1" class="data row6 col1" >109178.530000</td>
+      <td id="T_9f1b1_row6_col2" class="data row6 col2" >154</td>
+    </tr>
+    <tr>
+      <td id="T_9f1b1_row7_col0" class="data row7 col0" >Switzerland</td>
+      <td id="T_9f1b1_row7_col1" class="data row7 col1" >100365.340000</td>
+      <td id="T_9f1b1_row7_col2" class="data row7 col2" >90</td>
+    </tr>
+    <tr>
+      <td id="T_9f1b1_row8_col0" class="data row8 col0" >Sweden</td>
+      <td id="T_9f1b1_row8_col1" class="data row8 col1" >91549.720000</td>
+      <td id="T_9f1b1_row8_col2" class="data row8 col2" >104</td>
+    </tr>
+    <tr>
+      <td id="T_9f1b1_row9_col0" class="data row9 col0" >Denmark</td>
+      <td id="T_9f1b1_row9_col1" class="data row9 col1" >69862.190000</td>
+      <td id="T_9f1b1_row9_col2" class="data row9 col2" >43</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+        
+        <section class="query-section">
+
+            <h2>3 · Monthly revenue + month-over-month %</h2>
+
+            <h3>SQL Query</h3>
+
+            <pre><code>WITH m AS (
+    SELECT date_trunc(&#x27;month&#x27;, ts) AS mo,
+           sum(&quot;Quantity&quot;*&quot;Price&quot;) AS rev
+    FROM tx
+    GROUP BY 1
+)
+SELECT mo,
+       round(rev,2) AS revenue,
+       round(
+           100.0 *
+           (rev - lag(rev) OVER (ORDER BY mo))
+           / nullif(lag(rev) OVER (ORDER BY mo),0),
+           1
+       ) AS mom_pct
+FROM m
+ORDER BY mo;</code></pre>
+
+            <h3>Query Output</h3>
+
+            <style type="text/css">
+</style>
+<table id="T_aa125" class="output-table">
+  <thead>
+    <tr>
+      <th id="T_aa125_level0_col0" class="col_heading level0 col0" >mo</th>
+      <th id="T_aa125_level0_col1" class="col_heading level0 col1" >revenue</th>
+      <th id="T_aa125_level0_col2" class="col_heading level0 col2" >mom_pct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_aa125_row0_col0" class="data row0 col0" >2009-12-01 00:00:00</td>
+      <td id="T_aa125_row0_col1" class="data row0 col1" >686654.160000</td>
+      <td id="T_aa125_row0_col2" class="data row0 col2" >nan</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row1_col0" class="data row1 col0" >2010-01-01 00:00:00</td>
+      <td id="T_aa125_row1_col1" class="data row1 col1" >557319.060000</td>
+      <td id="T_aa125_row1_col2" class="data row1 col2" >-18.800000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row2_col0" class="data row2 col0" >2010-02-01 00:00:00</td>
+      <td id="T_aa125_row2_col1" class="data row2 col1" >506371.070000</td>
+      <td id="T_aa125_row2_col2" class="data row2 col2" >-9.100000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row3_col0" class="data row3 col0" >2010-03-01 00:00:00</td>
+      <td id="T_aa125_row3_col1" class="data row3 col1" >699608.990000</td>
+      <td id="T_aa125_row3_col2" class="data row3 col2" >38.200000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row4_col0" class="data row4 col0" >2010-04-01 00:00:00</td>
+      <td id="T_aa125_row4_col1" class="data row4 col1" >594609.190000</td>
+      <td id="T_aa125_row4_col2" class="data row4 col2" >-15.000000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row5_col0" class="data row5 col0" >2010-05-01 00:00:00</td>
+      <td id="T_aa125_row5_col1" class="data row5 col1" >599985.790000</td>
+      <td id="T_aa125_row5_col2" class="data row5 col2" >0.900000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row6_col0" class="data row6 col0" >2010-06-01 00:00:00</td>
+      <td id="T_aa125_row6_col1" class="data row6 col1" >639066.580000</td>
+      <td id="T_aa125_row6_col2" class="data row6 col2" >6.500000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row7_col0" class="data row7 col0" >2010-07-01 00:00:00</td>
+      <td id="T_aa125_row7_col1" class="data row7 col1" >591636.740000</td>
+      <td id="T_aa125_row7_col2" class="data row7 col2" >-7.400000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row8_col0" class="data row8 col0" >2010-08-01 00:00:00</td>
+      <td id="T_aa125_row8_col1" class="data row8 col1" >604242.650000</td>
+      <td id="T_aa125_row8_col2" class="data row8 col2" >2.100000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row9_col0" class="data row9 col0" >2010-09-01 00:00:00</td>
+      <td id="T_aa125_row9_col1" class="data row9 col1" >831615.000000</td>
+      <td id="T_aa125_row9_col2" class="data row9 col2" >37.600000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row10_col0" class="data row10 col0" >2010-10-01 00:00:00</td>
+      <td id="T_aa125_row10_col1" class="data row10 col1" >1036680.000000</td>
+      <td id="T_aa125_row10_col2" class="data row10 col2" >24.700000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row11_col0" class="data row11 col0" >2010-11-01 00:00:00</td>
+      <td id="T_aa125_row11_col1" class="data row11 col1" >1172336.040000</td>
+      <td id="T_aa125_row11_col2" class="data row11 col2" >13.100000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row12_col0" class="data row12 col0" >2010-12-01 00:00:00</td>
+      <td id="T_aa125_row12_col1" class="data row12 col1" >884591.890000</td>
+      <td id="T_aa125_row12_col2" class="data row12 col2" >-24.500000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row13_col0" class="data row13 col0" >2011-01-01 00:00:00</td>
+      <td id="T_aa125_row13_col1" class="data row13 col1" >569445.040000</td>
+      <td id="T_aa125_row13_col2" class="data row13 col2" >-35.600000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row14_col0" class="data row14 col0" >2011-02-01 00:00:00</td>
+      <td id="T_aa125_row14_col1" class="data row14 col1" >447137.350000</td>
+      <td id="T_aa125_row14_col2" class="data row14 col2" >-21.500000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row15_col0" class="data row15 col0" >2011-03-01 00:00:00</td>
+      <td id="T_aa125_row15_col1" class="data row15 col1" >595500.760000</td>
+      <td id="T_aa125_row15_col2" class="data row15 col2" >33.200000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row16_col0" class="data row16 col0" >2011-04-01 00:00:00</td>
+      <td id="T_aa125_row16_col1" class="data row16 col1" >469200.360000</td>
+      <td id="T_aa125_row16_col2" class="data row16 col2" >-21.200000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row17_col0" class="data row17 col0" >2011-05-01 00:00:00</td>
+      <td id="T_aa125_row17_col1" class="data row17 col1" >678594.560000</td>
+      <td id="T_aa125_row17_col2" class="data row17 col2" >44.600000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row18_col0" class="data row18 col0" >2011-06-01 00:00:00</td>
+      <td id="T_aa125_row18_col1" class="data row18 col1" >661213.690000</td>
+      <td id="T_aa125_row18_col2" class="data row18 col2" >-2.600000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row19_col0" class="data row19 col0" >2011-07-01 00:00:00</td>
+      <td id="T_aa125_row19_col1" class="data row19 col1" >600091.010000</td>
+      <td id="T_aa125_row19_col2" class="data row19 col2" >-9.200000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row20_col0" class="data row20 col0" >2011-08-01 00:00:00</td>
+      <td id="T_aa125_row20_col1" class="data row20 col1" >645343.900000</td>
+      <td id="T_aa125_row20_col2" class="data row20 col2" >7.500000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row21_col0" class="data row21 col0" >2011-09-01 00:00:00</td>
+      <td id="T_aa125_row21_col1" class="data row21 col1" >952838.380000</td>
+      <td id="T_aa125_row21_col2" class="data row21 col2" >47.600000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row22_col0" class="data row22 col0" >2011-10-01 00:00:00</td>
+      <td id="T_aa125_row22_col1" class="data row22 col1" >1039318.790000</td>
+      <td id="T_aa125_row22_col2" class="data row22 col2" >9.100000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row23_col0" class="data row23 col0" >2011-11-01 00:00:00</td>
+      <td id="T_aa125_row23_col1" class="data row23 col1" >1161817.380000</td>
+      <td id="T_aa125_row23_col2" class="data row23 col2" >11.800000</td>
+    </tr>
+    <tr>
+      <td id="T_aa125_row24_col0" class="data row24 col0" >2011-12-01 00:00:00</td>
+      <td id="T_aa125_row24_col1" class="data row24 col1" >518210.790000</td>
+      <td id="T_aa125_row24_col2" class="data row24 col2" >-55.400000</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+        
+        <section class="query-section">
+
+            <h2>4 · Top 10 stock codes by revenue</h2>
+
+            <h3>SQL Query</h3>
+
+            <pre><code>SELECT &quot;StockCode&quot;,
+       any_value(&quot;Description&quot;) AS product,
+       round(sum(&quot;Quantity&quot;*&quot;Price&quot;),2) AS revenue,
+       sum(&quot;Quantity&quot;) AS units
+FROM tx
+GROUP BY 1
+ORDER BY revenue DESC
+LIMIT 10;</code></pre>
+
+            <h3>Query Output</h3>
+
+            <style type="text/css">
+</style>
+<table id="T_e8ec8" class="output-table">
+  <thead>
+    <tr>
+      <th id="T_e8ec8_level0_col0" class="col_heading level0 col0" >StockCode</th>
+      <th id="T_e8ec8_level0_col1" class="col_heading level0 col1" >product</th>
+      <th id="T_e8ec8_level0_col2" class="col_heading level0 col2" >revenue</th>
+      <th id="T_e8ec8_level0_col3" class="col_heading level0 col3" >units</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_e8ec8_row0_col0" class="data row0 col0" >22423</td>
+      <td id="T_e8ec8_row0_col1" class="data row0 col1" >REGENCY CAKESTAND 3 TIER</td>
+      <td id="T_e8ec8_row0_col2" class="data row0 col2" >286486.300000</td>
+      <td id="T_e8ec8_row0_col3" class="data row0 col3" >24899.000000</td>
+    </tr>
+    <tr>
+      <td id="T_e8ec8_row1_col0" class="data row1 col0" >85123A</td>
+      <td id="T_e8ec8_row1_col1" class="data row1 col1" >WHITE HANGING HEART T-LIGHT HOLDER</td>
+      <td id="T_e8ec8_row1_col2" class="data row1 col2" >252227.810000</td>
+      <td id="T_e8ec8_row1_col3" class="data row1 col3" >93697.000000</td>
+    </tr>
+    <tr>
+      <td id="T_e8ec8_row2_col0" class="data row2 col0" >85099B</td>
+      <td id="T_e8ec8_row2_col1" class="data row2 col1" >RED RETROSPOT JUMBO BAG </td>
+      <td id="T_e8ec8_row2_col2" class="data row2 col2" >170616.680000</td>
+      <td id="T_e8ec8_row2_col3" class="data row2 col3" >94983.000000</td>
+    </tr>
+    <tr>
+      <td id="T_e8ec8_row3_col0" class="data row3 col0" >23843</td>
+      <td id="T_e8ec8_row3_col1" class="data row3 col1" >PAPER CRAFT , LITTLE BIRDIE</td>
+      <td id="T_e8ec8_row3_col2" class="data row3 col2" >168469.600000</td>
+      <td id="T_e8ec8_row3_col3" class="data row3 col3" >80995.000000</td>
+    </tr>
+    <tr>
+      <td id="T_e8ec8_row4_col0" class="data row4 col0" >M</td>
+      <td id="T_e8ec8_row4_col1" class="data row4 col1" >Manual</td>
+      <td id="T_e8ec8_row4_col2" class="data row4 col2" >152340.570000</td>
+      <td id="T_e8ec8_row4_col3" class="data row4 col3" >9803.000000</td>
+    </tr>
+    <tr>
+      <td id="T_e8ec8_row5_col0" class="data row5 col0" >84879</td>
+      <td id="T_e8ec8_row5_col1" class="data row5 col1" >ASSORTED COLOUR BIRD ORNAMENT</td>
+      <td id="T_e8ec8_row5_col2" class="data row5 col2" >127074.170000</td>
+      <td id="T_e8ec8_row5_col3" class="data row5 col3" >79913.000000</td>
+    </tr>
+    <tr>
+      <td id="T_e8ec8_row6_col0" class="data row6 col0" >POST</td>
+      <td id="T_e8ec8_row6_col1" class="data row6 col1" >POSTAGE</td>
+      <td id="T_e8ec8_row6_col2" class="data row6 col2" >126563.040000</td>
+      <td id="T_e8ec8_row6_col3" class="data row6 col3" >5333.000000</td>
+    </tr>
+    <tr>
+      <td id="T_e8ec8_row7_col0" class="data row7 col0" >47566</td>
+      <td id="T_e8ec8_row7_col1" class="data row7 col1" >PARTY BUNTING</td>
+      <td id="T_e8ec8_row7_col2" class="data row7 col2" >103880.230000</td>
+      <td id="T_e8ec8_row7_col3" class="data row7 col3" >23607.000000</td>
+    </tr>
+    <tr>
+      <td id="T_e8ec8_row8_col0" class="data row8 col0" >23166</td>
+      <td id="T_e8ec8_row8_col1" class="data row8 col1" >MEDIUM CERAMIC TOP STORAGE JAR</td>
+      <td id="T_e8ec8_row8_col2" class="data row8 col2" >81416.730000</td>
+      <td id="T_e8ec8_row8_col3" class="data row8 col3" >77916.000000</td>
+    </tr>
+    <tr>
+      <td id="T_e8ec8_row9_col0" class="data row9 col0" >22086</td>
+      <td id="T_e8ec8_row9_col1" class="data row9 col1" >PAPER CHAIN KIT 50'S CHRISTMAS </td>
+      <td id="T_e8ec8_row9_col2" class="data row9 col2" >79594.330000</td>
+      <td id="T_e8ec8_row9_col3" class="data row9 col3" >29477.000000</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+        
+        <section class="query-section">
+
+            <h2>5 · Revenue share of top 1% / top 10% customers</h2>
+
+            <h3>SQL Query</h3>
+
+            <pre><code>WITH c AS (
+    SELECT &quot;Customer ID&quot;,
+           sum(&quot;Quantity&quot;*&quot;Price&quot;) AS rev
+    FROM tx
+    GROUP BY 1
+),
+t AS (
+    SELECT rev,
+           ntile(100) OVER (ORDER BY rev DESC) AS pct
+    FROM c
+)
+SELECT
+    round(
+        100.0 *
+        sum(rev) FILTER (WHERE pct &lt;= 1)
+        / (SELECT sum(rev) FROM c),
+        1
+    ) AS top1pct_share,
+
+    round(
+        100.0 *
+        sum(rev) FILTER (WHERE pct &lt;= 10)
+        / (SELECT sum(rev) FROM c),
+        1
+    ) AS top10pct_share
+FROM t;</code></pre>
+
+            <h3>Query Output</h3>
+
+            <style type="text/css">
+</style>
+<table id="T_71e26" class="output-table">
+  <thead>
+    <tr>
+      <th id="T_71e26_level0_col0" class="col_heading level0 col0" >top1pct_share</th>
+      <th id="T_71e26_level0_col1" class="col_heading level0 col1" >top10pct_share</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_71e26_row0_col0" class="data row0 col0" >31.900000</td>
+      <td id="T_71e26_row0_col1" class="data row0 col1" >64.000000</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+        
+        <section class="query-section">
+
+            <h2>6 · Return value and return rate vs sales</h2>
+
+            <h3>SQL Query</h3>
+
+            <pre><code>SELECT
+    (
+        SELECT round(sum(&quot;Quantity&quot;*&quot;Price&quot;),2)
+        FROM tx
+    ) AS sales,
+
+    (
+        SELECT round(-sum(&quot;Quantity&quot;*&quot;Price&quot;),2)
+        FROM ret
+        WHERE &quot;Quantity&quot; &lt; 0
+    ) AS returned_value,
+
+    round(
+        100.0 *
+        (
+            SELECT -sum(&quot;Quantity&quot;*&quot;Price&quot;)
+            FROM ret
+            WHERE &quot;Quantity&quot; &lt; 0
+        )
+        /
+        (
+            SELECT sum(&quot;Quantity&quot;*&quot;Price&quot;)
+            FROM tx
+        ),
+        2
+    ) AS return_rate_pct;</code></pre>
+
+            <h3>Query Output</h3>
+
+            <style type="text/css">
+</style>
+<table id="T_43f41" class="output-table">
+  <thead>
+    <tr>
+      <th id="T_43f41_level0_col0" class="col_heading level0 col0" >sales</th>
+      <th id="T_43f41_level0_col1" class="col_heading level0 col1" >returned_value</th>
+      <th id="T_43f41_level0_col2" class="col_heading level0 col2" >return_rate_pct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_43f41_row0_col0" class="data row0 col0" >17743429.180000</td>
+      <td id="T_43f41_row0_col1" class="data row0 col1" >1527041.430000</td>
+      <td id="T_43f41_row0_col2" class="data row0 col2" >8.610000</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+        
+        <section class="query-section">
+
+            <h2>7 · Basket size: mean / median / p90 order value</h2>
+
+            <h3>SQL Query</h3>
+
+            <pre><code>WITH b AS (
+    SELECT &quot;Invoice&quot;,
+           sum(&quot;Quantity&quot;) AS units,
+           sum(&quot;Quantity&quot;*&quot;Price&quot;) AS val
+    FROM tx
+    GROUP BY 1
+)
+SELECT
+    round(avg(units),2) AS avg_units,
+    round(avg(val),2) AS avg_order_value,
+    round(median(val),2) AS median_order_value,
+    round(quantile_cont(val,0.9),2) AS p90_order_value,
+    round(max(val),2) AS max_order_value
+FROM b;</code></pre>
+
+            <h3>Query Output</h3>
+
+            <style type="text/css">
+</style>
+<table id="T_4510f" class="output-table">
+  <thead>
+    <tr>
+      <th id="T_4510f_level0_col0" class="col_heading level0 col0" >avg_units</th>
+      <th id="T_4510f_level0_col1" class="col_heading level0 col1" >avg_order_value</th>
+      <th id="T_4510f_level0_col2" class="col_heading level0 col2" >median_order_value</th>
+      <th id="T_4510f_level0_col3" class="col_heading level0 col3" >p90_order_value</th>
+      <th id="T_4510f_level0_col4" class="col_heading level0 col4" >max_order_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_4510f_row0_col0" class="data row0 col0" >289.600000</td>
+      <td id="T_4510f_row0_col1" class="data row0 col1" >479.950000</td>
+      <td id="T_4510f_row0_col2" class="data row0 col2" >305.250000</td>
+      <td id="T_4510f_row0_col3" class="data row0 col3" >851.670000</td>
+      <td id="T_4510f_row0_col4" class="data row0 col4" >168469.600000</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+        
+        <section class="query-section">
+
+            <h2>8 · Repeat-purchase rate</h2>
+
+            <h3>SQL Query</h3>
+
+            <pre><code>WITH c AS (
+    SELECT &quot;Customer ID&quot;,
+           count(DISTINCT &quot;Invoice&quot;) AS inv
+    FROM tx
+    GROUP BY 1
+)
+SELECT
+    count(*) AS total_customers,
+    count(*) FILTER (WHERE inv &gt; 1) AS repeat_customers,
+    round(
+        100.0 *
+        count(*) FILTER (WHERE inv &gt; 1)
+        / count(*),
+        1
+    ) AS repeat_rate_pct,
+    round(avg(inv),2) AS avg_orders_per_customer
+FROM c;</code></pre>
+
+            <h3>Query Output</h3>
+
+            <style type="text/css">
+</style>
+<table id="T_b6158" class="output-table">
+  <thead>
+    <tr>
+      <th id="T_b6158_level0_col0" class="col_heading level0 col0" >total_customers</th>
+      <th id="T_b6158_level0_col1" class="col_heading level0 col1" >repeat_customers</th>
+      <th id="T_b6158_level0_col2" class="col_heading level0 col2" >repeat_rate_pct</th>
+      <th id="T_b6158_level0_col3" class="col_heading level0 col3" >avg_orders_per_customer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_b6158_row0_col0" class="data row0 col0" >5878</td>
+      <td id="T_b6158_row0_col1" class="data row0 col1" >4255</td>
+      <td id="T_b6158_row0_col2" class="data row0 col2" >72.400000</td>
+      <td id="T_b6158_row0_col3" class="data row0 col3" >6.290000</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+        
+        <section class="query-section">
+
+            <h2>9 · Top 20 customers by lifetime revenue</h2>
+
+            <h3>SQL Query</h3>
+
+            <pre><code>SELECT
+    &quot;Customer ID&quot;,
+    round(sum(&quot;Quantity&quot;*&quot;Price&quot;),2) AS lifetime_revenue,
+    count(DISTINCT &quot;Invoice&quot;) AS orders
+FROM tx
+GROUP BY 1
+ORDER BY lifetime_revenue DESC
+LIMIT 20;</code></pre>
+
+            <h3>Query Output</h3>
+
+            <style type="text/css">
+</style>
+<table id="T_2c1e5" class="output-table">
+  <thead>
+    <tr>
+      <th id="T_2c1e5_level0_col0" class="col_heading level0 col0" >Customer ID</th>
+      <th id="T_2c1e5_level0_col1" class="col_heading level0 col1" >lifetime_revenue</th>
+      <th id="T_2c1e5_level0_col2" class="col_heading level0 col2" >orders</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_2c1e5_row0_col0" class="data row0 col0" >18102.000000</td>
+      <td id="T_2c1e5_row0_col1" class="data row0 col1" >608821.650000</td>
+      <td id="T_2c1e5_row0_col2" class="data row0 col2" >145</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row1_col0" class="data row1 col0" >14646.000000</td>
+      <td id="T_2c1e5_row1_col1" class="data row1 col1" >528602.520000</td>
+      <td id="T_2c1e5_row1_col2" class="data row1 col2" >151</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row2_col0" class="data row2 col0" >14156.000000</td>
+      <td id="T_2c1e5_row2_col1" class="data row2 col1" >313946.370000</td>
+      <td id="T_2c1e5_row2_col2" class="data row2 col2" >156</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row3_col0" class="data row3 col0" >14911.000000</td>
+      <td id="T_2c1e5_row3_col1" class="data row3 col1" >295972.630000</td>
+      <td id="T_2c1e5_row3_col2" class="data row3 col2" >398</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row4_col0" class="data row4 col0" >17450.000000</td>
+      <td id="T_2c1e5_row4_col1" class="data row4 col1" >246973.090000</td>
+      <td id="T_2c1e5_row4_col2" class="data row4 col2" >51</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row5_col0" class="data row5 col0" >13694.000000</td>
+      <td id="T_2c1e5_row5_col1" class="data row5 col1" >196482.810000</td>
+      <td id="T_2c1e5_row5_col2" class="data row5 col2" >143</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row6_col0" class="data row6 col0" >17511.000000</td>
+      <td id="T_2c1e5_row6_col1" class="data row6 col1" >175603.550000</td>
+      <td id="T_2c1e5_row6_col2" class="data row6 col2" >60</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row7_col0" class="data row7 col0" >16446.000000</td>
+      <td id="T_2c1e5_row7_col1" class="data row7 col1" >168472.500000</td>
+      <td id="T_2c1e5_row7_col2" class="data row7 col2" >2</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row8_col0" class="data row8 col0" >16684.000000</td>
+      <td id="T_2c1e5_row8_col1" class="data row8 col1" >147142.770000</td>
+      <td id="T_2c1e5_row8_col2" class="data row8 col2" >55</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row9_col0" class="data row9 col0" >12415.000000</td>
+      <td id="T_2c1e5_row9_col1" class="data row9 col1" >144458.370000</td>
+      <td id="T_2c1e5_row9_col2" class="data row9 col2" >28</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row10_col0" class="data row10 col0" >15061.000000</td>
+      <td id="T_2c1e5_row10_col1" class="data row10 col1" >137818.520000</td>
+      <td id="T_2c1e5_row10_col2" class="data row10 col2" >127</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row11_col0" class="data row11 col0" >16029.000000</td>
+      <td id="T_2c1e5_row11_col1" class="data row11 col1" >122209.140000</td>
+      <td id="T_2c1e5_row11_col2" class="data row11 col2" >107</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row12_col0" class="data row12 col0" >17949.000000</td>
+      <td id="T_2c1e5_row12_col1" class="data row12 col1" >118628.080000</td>
+      <td id="T_2c1e5_row12_col2" class="data row12 col2" >118</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row13_col0" class="data row13 col0" >15311.000000</td>
+      <td id="T_2c1e5_row13_col1" class="data row13 col1" >116771.160000</td>
+      <td id="T_2c1e5_row13_col2" class="data row13 col2" >208</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row14_col0" class="data row14 col0" >13089.000000</td>
+      <td id="T_2c1e5_row14_col1" class="data row14 col1" >116737.860000</td>
+      <td id="T_2c1e5_row14_col2" class="data row14 col2" >203</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row15_col0" class="data row15 col0" >12931.000000</td>
+      <td id="T_2c1e5_row15_col1" class="data row15 col1" >92347.340000</td>
+      <td id="T_2c1e5_row15_col2" class="data row15 col2" >57</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row16_col0" class="data row16 col0" >14298.000000</td>
+      <td id="T_2c1e5_row16_col1" class="data row16 col1" >91194.490000</td>
+      <td id="T_2c1e5_row16_col2" class="data row16 col2" >82</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row17_col0" class="data row17 col0" >15769.000000</td>
+      <td id="T_2c1e5_row17_col1" class="data row17 col1" >88704.320000</td>
+      <td id="T_2c1e5_row17_col2" class="data row17 col2" >46</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row18_col0" class="data row18 col0" >12346.000000</td>
+      <td id="T_2c1e5_row18_col1" class="data row18 col1" >77556.460000</td>
+      <td id="T_2c1e5_row18_col2" class="data row18 col2" >12</td>
+    </tr>
+    <tr>
+      <td id="T_2c1e5_row19_col0" class="data row19 col0" >13798.000000</td>
+      <td id="T_2c1e5_row19_col1" class="data row19 col1" >75836.870000</td>
+      <td id="T_2c1e5_row19_col2" class="data row19 col2" >110</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+        
+        <section class="query-section">
+
+            <h2>10 · Revenue by weekday</h2>
+
+            <h3>SQL Query</h3>
+
+            <pre><code>SELECT
+    dayname(ts) AS weekday,
+    round(sum(&quot;Quantity&quot;*&quot;Price&quot;),2) AS revenue,
+    count(DISTINCT &quot;Invoice&quot;) AS orders
+FROM tx
+GROUP BY 1
+ORDER BY revenue DESC;</code></pre>
+
+            <h3>Query Output</h3>
+
+            <style type="text/css">
+</style>
+<table id="T_1cebc" class="output-table">
+  <thead>
+    <tr>
+      <th id="T_1cebc_level0_col0" class="col_heading level0 col0" >weekday</th>
+      <th id="T_1cebc_level0_col1" class="col_heading level0 col1" >revenue</th>
+      <th id="T_1cebc_level0_col2" class="col_heading level0 col2" >orders</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_1cebc_row0_col0" class="data row0 col0" >Thursday</td>
+      <td id="T_1cebc_row0_col1" class="data row0 col1" >3841082.960000</td>
+      <td id="T_1cebc_row0_col2" class="data row0 col2" >7773</td>
+    </tr>
+    <tr>
+      <td id="T_1cebc_row1_col0" class="data row1 col0" >Tuesday</td>
+      <td id="T_1cebc_row1_col1" class="data row1 col1" >3384678.830000</td>
+      <td id="T_1cebc_row1_col2" class="data row1 col2" >6627</td>
+    </tr>
+    <tr>
+      <td id="T_1cebc_row2_col0" class="data row2 col0" >Wednesday</td>
+      <td id="T_1cebc_row2_col1" class="data row2 col1" >3115619.690000</td>
+      <td id="T_1cebc_row2_col2" class="data row2 col2" >6649</td>
+    </tr>
+    <tr>
+      <td id="T_1cebc_row3_col0" class="data row3 col0" >Monday</td>
+      <td id="T_1cebc_row3_col1" class="data row3 col1" >2817407.810000</td>
+      <td id="T_1cebc_row3_col2" class="data row3 col2" >5755</td>
+    </tr>
+    <tr>
+      <td id="T_1cebc_row4_col0" class="data row4 col0" >Friday</td>
+      <td id="T_1cebc_row4_col1" class="data row4 col1" >2758423.490000</td>
+      <td id="T_1cebc_row4_col2" class="data row4 col2" >5387</td>
+    </tr>
+    <tr>
+      <td id="T_1cebc_row5_col0" class="data row5 col0" >Sunday</td>
+      <td id="T_1cebc_row5_col1" class="data row5 col1" >1816413.340000</td>
+      <td id="T_1cebc_row5_col2" class="data row5 col2" >4748</td>
+    </tr>
+    <tr>
+      <td id="T_1cebc_row6_col0" class="data row6 col0" >Saturday</td>
+      <td id="T_1cebc_row6_col1" class="data row6 col1" >9803.050000</td>
+      <td id="T_1cebc_row6_col2" class="data row6 col2" >30</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+        
+        <section class="query-section">
+
+            <h2>11 · Top 10 most-returned stock codes</h2>
+
+            <h3>SQL Query</h3>
+
+            <pre><code>SELECT
+    &quot;StockCode&quot;,
+    any_value(&quot;Description&quot;) AS product,
+    sum(-&quot;Quantity&quot;) AS units_returned,
+    round(sum(-&quot;Quantity&quot;*&quot;Price&quot;),2) AS return_value
+FROM ret
+WHERE &quot;Quantity&quot; &lt; 0
+GROUP BY 1
+ORDER BY return_value DESC
+LIMIT 10;</code></pre>
+
+            <h3>Query Output</h3>
+
+            <style type="text/css">
+</style>
+<table id="T_5b785" class="output-table">
+  <thead>
+    <tr>
+      <th id="T_5b785_level0_col0" class="col_heading level0 col0" >StockCode</th>
+      <th id="T_5b785_level0_col1" class="col_heading level0 col1" >product</th>
+      <th id="T_5b785_level0_col2" class="col_heading level0 col2" >units_returned</th>
+      <th id="T_5b785_level0_col3" class="col_heading level0 col3" >return_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_5b785_row0_col0" class="data row0 col0" >M</td>
+      <td id="T_5b785_row0_col1" class="data row0 col1" >Manual</td>
+      <td id="T_5b785_row0_col2" class="data row0 col2" >5451.000000</td>
+      <td id="T_5b785_row0_col3" class="data row0 col3" >423886.170000</td>
+    </tr>
+    <tr>
+      <td id="T_5b785_row1_col0" class="data row1 col0" >AMAZONFEE</td>
+      <td id="T_5b785_row1_col1" class="data row1 col1" >AMAZON FEE</td>
+      <td id="T_5b785_row1_col2" class="data row1 col2" >39.000000</td>
+      <td id="T_5b785_row1_col3" class="data row1 col3" >294772.710000</td>
+    </tr>
+    <tr>
+      <td id="T_5b785_row2_col0" class="data row2 col0" >23843</td>
+      <td id="T_5b785_row2_col1" class="data row2 col1" >PAPER CRAFT , LITTLE BIRDIE</td>
+      <td id="T_5b785_row2_col2" class="data row2 col2" >80995.000000</td>
+      <td id="T_5b785_row2_col3" class="data row2 col3" >168469.600000</td>
+    </tr>
+    <tr>
+      <td id="T_5b785_row3_col0" class="data row3 col0" >23166</td>
+      <td id="T_5b785_row3_col1" class="data row3 col1" >MEDIUM CERAMIC TOP STORAGE JAR</td>
+      <td id="T_5b785_row3_col2" class="data row3 col2" >74494.000000</td>
+      <td id="T_5b785_row3_col3" class="data row3 col3" >77479.640000</td>
+    </tr>
+    <tr>
+      <td id="T_5b785_row4_col0" class="data row4 col0" >BANK CHARGES</td>
+      <td id="T_5b785_row4_col1" class="data row4 col1" >Bank Charges</td>
+      <td id="T_5b785_row4_col2" class="data row4 col2" >77.000000</td>
+      <td id="T_5b785_row4_col3" class="data row4 col3" >36096.870000</td>
+    </tr>
+    <tr>
+      <td id="T_5b785_row5_col0" class="data row5 col0" >22423</td>
+      <td id="T_5b785_row5_col1" class="data row5 col1" >REGENCY CAKESTAND 3 TIER</td>
+      <td id="T_5b785_row5_col2" class="data row5 col2" >1830.000000</td>
+      <td id="T_5b785_row5_col3" class="data row5 col3" >16749.600000</td>
+    </tr>
+    <tr>
+      <td id="T_5b785_row6_col0" class="data row6 col0" >POST</td>
+      <td id="T_5b785_row6_col1" class="data row6 col1" >POSTAGE</td>
+      <td id="T_5b785_row6_col2" class="data row6 col2" >303.000000</td>
+      <td id="T_5b785_row6_col3" class="data row6 col3" >15256.420000</td>
+    </tr>
+    <tr>
+      <td id="T_5b785_row7_col0" class="data row7 col0" >D</td>
+      <td id="T_5b785_row7_col1" class="data row7 col1" >Discount</td>
+      <td id="T_5b785_row7_col2" class="data row7 col2" >3068.000000</td>
+      <td id="T_5b785_row7_col3" class="data row7 col3" >13882.430000</td>
+    </tr>
+    <tr>
+      <td id="T_5b785_row8_col0" class="data row8 col0" >85123A</td>
+      <td id="T_5b785_row8_col1" class="data row8 col1" >WHITE HANGING HEART T-LIGHT HOLDER</td>
+      <td id="T_5b785_row8_col2" class="data row8 col2" >4086.000000</td>
+      <td id="T_5b785_row8_col3" class="data row8 col3" >9389.650000</td>
+    </tr>
+    <tr>
+      <td id="T_5b785_row9_col0" class="data row9 col0" >CRUK</td>
+      <td id="T_5b785_row9_col1" class="data row9 col1" >CRUK Commission</td>
+      <td id="T_5b785_row9_col2" class="data row9 col2" >16.000000</td>
+      <td id="T_5b785_row9_col3" class="data row9 col3" >7933.430000</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+        
+        <section class="query-section">
+
+            <h2>12 · RFM segmentation (5-tile scores)</h2>
+
+            <h3>SQL Query</h3>
+
+            <pre><code>WITH ref AS (
+    SELECT max(ts) AS latest
+    FROM tx
+),
+c AS (
+    SELECT
+        &quot;Customer ID&quot;,
+        datediff(
+            &#x27;day&#x27;,
+            max(ts),
+            (SELECT latest FROM ref)
+        ) AS recency_days,
+        count(DISTINCT &quot;Invoice&quot;) AS frequency,
+        sum(&quot;Quantity&quot;*&quot;Price&quot;) AS monetary
+    FROM tx
+    GROUP BY 1
+),
+s AS (
+    SELECT *,
+           ntile(5) OVER (
+               ORDER BY recency_days DESC
+           ) AS r5,
+           ntile(5) OVER (
+               ORDER BY frequency
+           ) AS f5,
+           ntile(5) OVER (
+               ORDER BY monetary
+           ) AS m5
+    FROM c
+)
+SELECT
+    r5,
+    f5,
+    m5,
+    count(*) AS customers,
+    round(avg(monetary),2) AS avg_monetary
+FROM s
+GROUP BY 1,2,3
+ORDER BY customers DESC
+LIMIT 15;</code></pre>
+
+            <h3>Query Output</h3>
+
+            <style type="text/css">
+</style>
+<table id="T_c6c89" class="output-table">
+  <thead>
+    <tr>
+      <th id="T_c6c89_level0_col0" class="col_heading level0 col0" >r5</th>
+      <th id="T_c6c89_level0_col1" class="col_heading level0 col1" >f5</th>
+      <th id="T_c6c89_level0_col2" class="col_heading level0 col2" >m5</th>
+      <th id="T_c6c89_level0_col3" class="col_heading level0 col3" >customers</th>
+      <th id="T_c6c89_level0_col4" class="col_heading level0 col4" >avg_monetary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_c6c89_row0_col0" class="data row0 col0" >5</td>
+      <td id="T_c6c89_row0_col1" class="data row0 col1" >5</td>
+      <td id="T_c6c89_row0_col2" class="data row0 col2" >5</td>
+      <td id="T_c6c89_row0_col3" class="data row0 col3" >467</td>
+      <td id="T_c6c89_row0_col4" class="data row0 col4" >17854.260000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row1_col0" class="data row1 col0" >1</td>
+      <td id="T_c6c89_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_c6c89_row1_col2" class="data row1 col2" >1</td>
+      <td id="T_c6c89_row1_col3" class="data row1 col3" >295</td>
+      <td id="T_c6c89_row1_col4" class="data row1 col4" >149.340000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row2_col0" class="data row2 col0" >4</td>
+      <td id="T_c6c89_row2_col1" class="data row2 col1" >5</td>
+      <td id="T_c6c89_row2_col2" class="data row2 col2" >5</td>
+      <td id="T_c6c89_row2_col3" class="data row2 col3" >245</td>
+      <td id="T_c6c89_row2_col4" class="data row2 col4" >9042.680000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row3_col0" class="data row3 col0" >1</td>
+      <td id="T_c6c89_row3_col1" class="data row3 col1" >2</td>
+      <td id="T_c6c89_row3_col2" class="data row3 col2" >1</td>
+      <td id="T_c6c89_row3_col3" class="data row3 col3" >176</td>
+      <td id="T_c6c89_row3_col4" class="data row3 col4" >158.280000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row4_col0" class="data row4 col0" >3</td>
+      <td id="T_c6c89_row4_col1" class="data row4 col1" >4</td>
+      <td id="T_c6c89_row4_col2" class="data row4 col2" >4</td>
+      <td id="T_c6c89_row4_col3" class="data row4 col3" >159</td>
+      <td id="T_c6c89_row4_col4" class="data row4 col4" >2019.260000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row5_col0" class="data row5 col0" >4</td>
+      <td id="T_c6c89_row5_col1" class="data row5 col1" >4</td>
+      <td id="T_c6c89_row5_col2" class="data row5 col2" >4</td>
+      <td id="T_c6c89_row5_col3" class="data row5 col3" >144</td>
+      <td id="T_c6c89_row5_col4" class="data row5 col4" >1926.530000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row6_col0" class="data row6 col0" >3</td>
+      <td id="T_c6c89_row6_col1" class="data row6 col1" >5</td>
+      <td id="T_c6c89_row6_col2" class="data row6 col2" >5</td>
+      <td id="T_c6c89_row6_col3" class="data row6 col3" >139</td>
+      <td id="T_c6c89_row6_col4" class="data row6 col4" >6868.550000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row7_col0" class="data row7 col0" >2</td>
+      <td id="T_c6c89_row7_col1" class="data row7 col1" >1</td>
+      <td id="T_c6c89_row7_col2" class="data row7 col2" >1</td>
+      <td id="T_c6c89_row7_col3" class="data row7 col3" >138</td>
+      <td id="T_c6c89_row7_col4" class="data row7 col4" >156.250000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row8_col0" class="data row8 col0" >1</td>
+      <td id="T_c6c89_row8_col1" class="data row8 col1" >2</td>
+      <td id="T_c6c89_row8_col2" class="data row8 col2" >2</td>
+      <td id="T_c6c89_row8_col3" class="data row8 col3" >136</td>
+      <td id="T_c6c89_row8_col4" class="data row8 col4" >428.250000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row9_col0" class="data row9 col0" >2</td>
+      <td id="T_c6c89_row9_col1" class="data row9 col1" >2</td>
+      <td id="T_c6c89_row9_col2" class="data row9 col2" >1</td>
+      <td id="T_c6c89_row9_col3" class="data row9 col3" >135</td>
+      <td id="T_c6c89_row9_col4" class="data row9 col4" >168.450000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row10_col0" class="data row10 col0" >2</td>
+      <td id="T_c6c89_row10_col1" class="data row10 col1" >2</td>
+      <td id="T_c6c89_row10_col2" class="data row10 col2" >2</td>
+      <td id="T_c6c89_row10_col3" class="data row10 col3" >135</td>
+      <td id="T_c6c89_row10_col4" class="data row10 col4" >414.900000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row11_col0" class="data row11 col0" >5</td>
+      <td id="T_c6c89_row11_col1" class="data row11 col1" >4</td>
+      <td id="T_c6c89_row11_col2" class="data row11 col2" >4</td>
+      <td id="T_c6c89_row11_col3" class="data row11 col3" >132</td>
+      <td id="T_c6c89_row11_col4" class="data row11 col4" >1992.520000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row12_col0" class="data row12 col0" >1</td>
+      <td id="T_c6c89_row12_col1" class="data row12 col1" >1</td>
+      <td id="T_c6c89_row12_col2" class="data row12 col2" >2</td>
+      <td id="T_c6c89_row12_col3" class="data row12 col3" >131</td>
+      <td id="T_c6c89_row12_col4" class="data row12 col4" >377.570000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row13_col0" class="data row13 col0" >3</td>
+      <td id="T_c6c89_row13_col1" class="data row13 col1" >1</td>
+      <td id="T_c6c89_row13_col2" class="data row13 col2" >1</td>
+      <td id="T_c6c89_row13_col3" class="data row13 col3" >127</td>
+      <td id="T_c6c89_row13_col4" class="data row13 col4" >157.210000</td>
+    </tr>
+    <tr>
+      <td id="T_c6c89_row14_col0" class="data row14 col0" >4</td>
+      <td id="T_c6c89_row14_col1" class="data row14 col1" >3</td>
+      <td id="T_c6c89_row14_col2" class="data row14 col2" >3</td>
+      <td id="T_c6c89_row14_col3" class="data row14 col3" >125</td>
+      <td id="T_c6c89_row14_col4" class="data row14 col4" >927.780000</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+        
+
+</body>
+</html>

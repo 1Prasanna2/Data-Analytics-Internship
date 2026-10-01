@@ -31,6 +31,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 21 | 28-09-2026 | A/B Test Exploratory Analysis | [📁 day-21](day-21/) | ✅ Done | Compare conversion rates for two variants and estimate uncertanity. |
 | 22 | 29-09-2026 | Cohort Retention Basics | [📁 day-22](day-22/) | ✅ Done | Building a cohort retention table by signup month |
 | 23 | 30-09-2026 | SQL Window Functions Intro | [📁 day-23](day-23/) | ✅ Done | Learning analytical SQL Patterns |
+| 24 | 01-10-2026 | Data Quality Audit  | [📁 day-24](day-24/) | ✅ Done | Repeatable quality checklist |
 
 **Status legend:** ✅ Done · 🚧 In Progress · ⬜ Not Started · 🔁 Revision requested
 

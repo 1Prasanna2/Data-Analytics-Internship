@@ -1,0 +1,8 @@
+rule_id,impact,actionability,priority,decision
+DQ06,Very High,High (format fix + reload),1,Repair now — blocking
+DQ04,High,Very High (only ~5 rows),2,Investigate & correct individually
+DQ03,High (gross vs net),Route-only (legitimate returns),3,Separate into returns view; never mix raw with sales
+DQ01,High (customer-scoped only),Low (unrecoverable),4,Exclude from customer analyses + document ~23% anonymity
+DQ05,Medium (AOV/margin),Medium (policy call),4,Flag non-revenue; decide include-in-volume / exclude-from-$
+DQ02,Medium (independence/count),High (dedupe),5,"Inspect samples; drop true repeats, log conflicting"
+DQ07,Low (readability),Medium (backfill/annotate),5,Backfill from StockCode master or annotate gap

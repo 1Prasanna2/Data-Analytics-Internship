@@ -1,0 +1,8 @@
+rule_id,category,description,columns,count,pct,severity,status,review_action
+DQ01,Missing,CustomerID should be present,Customer ID,243007,22.77%,Medium,NOTED ℹ️,"Exclude from customer-scoped analyses (RFM, cohorts); retain in aggregate revenue. Document ~23% anonymity."
+DQ02,Duplicate,Exact duplicate rows,All,67242,6.30%,Medium,NOTED ℹ️,Inspect samples. Drop true repeats (all fields identical incl. timestamp). Keep conflicting records flagged for manual reconciliation.
+DQ03,Range,Quantity < 0 (cancellations/returns),Quantity,22950,2.15%,High,REVIEW ⚠️,Route to dedicated returns table/view. Never mix with positive sales in raw sums. Correlate with Invoice prefix 'C'.
+DQ04,Range,Price < 0 (anomalous),Price,5,0.0005%,High,REVIEW ⚠️,Investigate each case manually. Determine if double-negative artifact or genuine error. Correct at source or exclude with logged rationale.
+DQ05,Range,Price = 0 (promotional/freebie),Price,6202,0.58%,Review,INFO 💡,Flag as non-revenue transactions. Exclude from AOV/margin calcs unless business defines them as valid SKUs. Consider separate promo tracking.
+DQ06,Validity,Invalid/unparseable InvoiceDate,InvoiceDate,0,0.00%,CRITICAL,PASS ✅,BLOCKING ISSUE IF >0. Fix date parsing format string NOW. Cannot proceed with any temporal analysis until resolved.
+DQ07,Missing,Product Description missing,Description,4382,0.41%,Low,INFO 💡,"Acceptable for numeric aggregation. For product-name reports, optionally backfill from StockCode master map or annotate gap size."

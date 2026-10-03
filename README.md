@@ -33,7 +33,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 23 | 30-09-2026 | SQL Window Functions Intro | [📁 day-23](day-23/) | ✅ Done | Learning analytical SQL Patterns |
 | 24 | 01-10-2026 | Data Quality Audit  | [📁 day-24](day-24/) | ✅ Done | Repeatable quality checklist |
 | 25 | 02-10-2026 | MultiTable_Sales_Analysis  | [📁 day-25](day-25/) | ✅ Done | Doing multi-table analysis and dashboard making |
-
+| 26 | 03-10-2026 | Executive KPI Dashboard  | [📁 day-26](day-26/) | ✅ Done | Designing a concise business report |
 
 
 **Status legend:** ✅ Done · 🚧 In Progress · ⬜ Not Started · 🔁 Revision requested

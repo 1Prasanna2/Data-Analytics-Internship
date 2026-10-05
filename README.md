@@ -35,6 +35,8 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 25 | 02-10-2026 | MultiTable_Sales_Analysis  | [📁 day-25](day-25/) | ✅ Done | Doing multi-table analysis and dashboard making |
 | 26 | 03-10-2026 | Executive KPI Dashboard  | [📁 day-26](day-26/) | ✅ Done | Designing a concise business report |
 | 27 | 04-10-2026 | Salesperson Performance Analysis  | [📁 day-27](day-27/) | ✅ Done | Analysing the salesperson performance |
+| 28 | 05-10-2026 | Customer Repeat Purchase Analysis  | [📁 day-28](day-28/) | ✅ Done | Analysing the purchase pattern of repeat customers and first-time buyer |
+
 
 
 **Status legend:** ✅ Done · 🚧 In Progress · ⬜ Not Started · 🔁 Revision requested

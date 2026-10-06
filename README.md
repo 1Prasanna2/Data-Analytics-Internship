@@ -36,6 +36,7 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 | 26 | 03-10-2026 | Executive KPI Dashboard  | [📁 day-26](day-26/) | ✅ Done | Designing a concise business report |
 | 27 | 04-10-2026 | Salesperson Performance Analysis  | [📁 day-27](day-27/) | ✅ Done | Analysing the salesperson performance |
 | 28 | 05-10-2026 | Customer Repeat Purchase Analysis  | [📁 day-28](day-28/) | ✅ Done | Analysing the purchase pattern of repeat customers and first-time buyer |
+| 29 | 06-10-2026 | Product Basket Analysis  | [📁 day-28](day-28/) | ✅ Done | Identifying the products frequently purchased together |
 
 
 

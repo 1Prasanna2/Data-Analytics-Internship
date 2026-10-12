@@ -47,5 +47,5 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 
 | # | Project | Repository | Status |
 |:-:|---------|------------|:------:|
-| 1 | *-* | *-* | ⬜ Not Started |
+| 1 | OTT Streaming Content Trend Analysis | *_PROJECTS/project-1* | ✅ Done |
 | 2 | *-* | *-* | ⬜ Not Started |

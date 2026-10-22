@@ -49,3 +49,4 @@ Daily skill-based tasks, each documented end-to-end (code + docs + outputs).
 |:-:|---------|------------|:------:|
 | 1 | OTT Streaming Content Trend Analysis | *_PROJECTS/project-1* | ✅ Done |
 | 2 | Covid-19 Global Impact Dashboard | *_PROJECTS/project-2* | ✅ Done |
+| 3 | E-commerce Customer Segmentation | *_PROJECTS/project-3* | ✅ Done |
